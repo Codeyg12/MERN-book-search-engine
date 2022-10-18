@@ -18,6 +18,11 @@ const typeDefs = gql`
     password: String!
     savedBooks: [Book]
   }
+
+  type Query {
+    getSingleUser: User
+    me: User
+  }
 `;
 
 module.exports = typeDefs;
