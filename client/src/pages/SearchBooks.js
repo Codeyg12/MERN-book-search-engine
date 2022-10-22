@@ -70,9 +70,12 @@ const SearchBooks = () => {
     }
 
     try {
+      console.log(bookToSave)
+      // eslint-disable-next-line
      const  { data } = await saveBook({
       variables: { input: bookToSave }
      })
+     
       // response = await saveBook(bookToSave, token);
 
       if (error) {

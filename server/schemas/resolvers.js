@@ -15,15 +15,16 @@ const resolvers = {
   Mutation: {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
-      const correctPw = await user.isCorrectPassword(password);
-
+      
       // if (!user || !correctPw) {
       //   throw new AuthenticationError("Invalid email or password");
       // }
-
       if (!user) {
         throw new AuthenticationError("Invalid email or password");
       }
+
+      const correctPw = await user.isCorrectPassword(password);
+
       if (!correctPw) {
         throw new AuthenticationError("Invalid email or password");
       }
@@ -39,7 +40,7 @@ const resolvers = {
     },
     saveBook: async (parent, args, context) => {
       if (context.user) {
-        const newBook = await User.findByIdAndUpdate(
+        const newBook = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $push: { savedBooks: args.input } },
           { new: true }
