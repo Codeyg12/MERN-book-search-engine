@@ -6,9 +6,7 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        const myData = await User.findOne({ _id: context.user._id }).select(
-          "-__v -password"
-        );
+        const myData = await User.findOne({ _id: context.user._id })
         return myData;
       }
       throw new AuthenticationError("Log in to see your saved books");
@@ -19,7 +17,14 @@ const resolvers = {
       const user = await User.findOne({ email });
       const correctPw = await user.isCorrectPassword(password);
 
-      if (!user || !correctPw) {
+      // if (!user || !correctPw) {
+      //   throw new AuthenticationError("Invalid email or password");
+      // }
+
+      if (!user) {
+        throw new AuthenticationError("Invalid email or password");
+      }
+      if (!correctPw) {
         throw new AuthenticationError("Invalid email or password");
       }
 
@@ -36,7 +41,7 @@ const resolvers = {
       if (context.user) {
         const newBook = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { savedBooks: args.input } },
+          { $push: { savedBooks: args.input } },
           { new: true }
         );
         return newBook;
