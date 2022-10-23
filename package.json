@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "apollo-server-express": "^2.15.0",
-    "dotenv": "^16.0.3",
-    "heroku": "^7.65.0"
+    "heroku": "^7.65.0",
+    "if-env": "^1.0.4"
   },
   "engines": {
     "node": "16.x",
