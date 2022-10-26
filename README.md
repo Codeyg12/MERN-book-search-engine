@@ -26,7 +26,7 @@ a fully functioning Google Books API search engine refactored from a RESTful API
 
 ### Demo
 
-The deployed app can be found at the [link](https://morning-beyond-74333.herokuapp.com/)
+The deployed app can be found at the [link](https://afternoon-chamber-34287.herokuapp.com/)
 
 Screenshots from finished product
 
