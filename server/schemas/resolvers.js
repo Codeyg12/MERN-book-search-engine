@@ -15,10 +15,7 @@ const resolvers = {
   Mutation: {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
-      
-      // if (!user || !correctPw) {
-      //   throw new AuthenticationError("Invalid email or password");
-      // }
+     
       if (!user) {
         throw new AuthenticationError("Invalid email or password");
       }
