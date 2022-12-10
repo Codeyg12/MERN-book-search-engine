@@ -1,6 +1,6 @@
 <a name="readme-top"></a>
 
-# Book Search Engine Starter Code
+# Book Search Engine Starter Code [<img align="right" src="https://img.shields.io/badge/license-MIT-00beef"></img>](LICENSE)
 
 ### Description
 
